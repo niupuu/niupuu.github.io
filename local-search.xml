@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2023/02/18/%5BBugKu%20Web%5Dez_serialize/"/>
-    <url>/2023/02/18/%5BBugKu%20Web%5Dez_serialize/</url>
-    
-    <content type="html"><![CDATA[<h2 id="BugKu-Web-ez-serialize"><a href="#BugKu-Web-ez-serialize" class="headerlink" title="[BugKu Web]ez_serialize"></a>[BugKu Web]ez_serialize</h2><hr><p>一道java反序列化的题目。</p><h3 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h3><ol><li>下载源码，导入IDEA后查看pom.xml文件。发现存在commons-collections依赖。<img src="C:\Users\愿与伪\AppData\Roaming\Typora\typora-user-images\image-20221116230228955.png" alt="image-20221116230228955"></li><li></li></ol>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World</title>
     <link href="/2023/01/06/hello-world/"/>
     <url>/2023/01/06/hello-world/</url>
