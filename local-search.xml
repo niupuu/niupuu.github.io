@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Mark loves cat</title>
+    <link href="/2023/03/01/Mark-loves-cat/"/>
+    <url>/2023/03/01/Mark-loves-cat/</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路">解题思路</h3><ol><li><p>dirsearch扫描目录，发现git文件，说明存在git泄露。</p></li><li><p>GitHack下载源码</p><p><img src="1.png" alt="image-20221111153901725"></p></li><li><p>​发现存在flig.php和index.php，查看源代码</p></li></ol><h3 id="代码审计">代码审计</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$flag</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;/flag&#x27;</span>);<br></code></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;flag.php&#x27;</span>;<br><br><span class="hljs-variable">$yds</span> = <span class="hljs-string">&quot;dog&quot;</span>;<br><span class="hljs-variable">$is</span> = <span class="hljs-string">&quot;cat&quot;</span>;<br><span class="hljs-variable">$handsome</span> = <span class="hljs-string">&#x27;yds&#x27;</span>;<br><br><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_POST</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$x</span> =&gt; <span class="hljs-variable">$y</span>)&#123;<br>    <span class="hljs-variable">$$x</span> = <span class="hljs-variable">$y</span>; <br>&#125;<br><br><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_GET</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$x</span> =&gt; <span class="hljs-variable">$y</span>)&#123;<br>    <span class="hljs-variable">$$x</span> = <span class="hljs-variable">$$y</span>; <br>&#125;<br><span class="hljs-comment">//如果 get型flag参数绝对等于变量名并且变量名等不等于flag则执行 exit($handsome)，这里可以用?flag=aaa&amp;aaa=123输出$handsome，但是这个写法会在前面进行变量覆盖的时候让$flag = $aaa进而报错（因为$aaa不存在），因此这里行不通。</span><br><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_GET</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$x</span> =&gt; <span class="hljs-variable">$y</span>)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-variable">$x</span> &amp;&amp; <span class="hljs-variable">$x</span> !== <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;  <span class="hljs-comment">//</span><br>        <span class="hljs-keyword">exit</span>(<span class="hljs-variable">$handsome</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//如果GET和POST都没有传flag参数，则执行exit($yds)这里可以传?yds=flag，经过变量覆盖之后就$yds = $flag，从而输出$flag的值。</span><br><span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;flag&#x27;</span>]) &amp;&amp; !<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;flag&#x27;</span>]))&#123;<br>    <span class="hljs-keyword">exit</span>(<span class="hljs-variable">$yds</span>);<br>&#125;<br><br><span class="hljs-comment">//如果GET或POST有一个或都传了flag参数而且参数值为flag，则执行exit($is)这里我们可以让GET传$_GET[flag]=flag，则进入了条件语句里面，再传?is=flag，进行变量覆盖使$is = $flag，即可。</span><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-string">&#x27;flag&#x27;</span>  || <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;<br>    <span class="hljs-keyword">exit</span>(<span class="hljs-variable">$is</span>);<br>&#125;<br><br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;the flag is: &quot;</span>.<span class="hljs-variable">$flag</span>;<br></code></pre></td></tr></table></figure><ol><li><p>php中有两个美元符号$$的变量——可变变量</p><ol><li><p>可变变量：如果一个变量保存的值刚好是另外一个变量的名字，那么可以直接通过访问一个变量得到另外一个变量的值：在变量之前再多加一个 $ 符号</p></li><li><p>eg：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$a</span> = <span class="hljs-string">&#x27;b&#x27;</span>;<br><span class="hljs-variable">$b</span> = <span class="hljs-string">&#x27;bb&#x27;</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$$a</span>; <br><span class="hljs-comment">// 输出 bb   1.找到 $a,解析结果：b    2.找到$b,解析结果 bb</span><br></code></pre></td></tr></table></figure></li></ol></li><li><p>exit — 输出一个消息并且退出当前脚本</p></li></ol><h3 id="实现">实现</h3><ol><li><img src="2.png" alt="image-20221111162643054"></li></ol><h3 id="参考连接">参考连接</h3><ol><li><a href="https://www.cnblogs.com/linkzoom/articles/15147013.html">https://www.cnblogs.com/linkzoom/articles/15147013.html</a></li><li><a href="https://johnfrod.top/ctf/bjdctf-2020mark-loves-cat/">https://johnfrod.top/ctf/bjdctf-2020mark-loves-cat/</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>ctf</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>BUUCTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Test</title>
     <link href="/2021/06/10/Test/"/>
     <url>/2021/06/10/Test/</url>
@@ -21,31 +46,6 @@
     <tags>
       
       <tag>测试</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>测试文章</title>
-    <link href="/2021/06/10/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2021/06/10/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><p><img src="3.jpg" alt="图片引用"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Java</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>原创</tag>
       
     </tags>
     
